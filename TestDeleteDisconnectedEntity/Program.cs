@@ -19,7 +19,7 @@ namespace TestDeleteDisconnectedEntity
             {
                 var businessPartner = context.BusinessPartners
                     .Include(bp => bp.Contracts)
-                    .Include(bp => bp.Contracts.Select(ube => ube.UrencoBusinessEntity))
+                    .Include(bp => bp.Contracts.Select(be => be.BusinessEntity))
                     .FirstOrDefault(e => e.Name == "Business Partner 1");
 
                 Debug.Assert(businessPartner != null, nameof(businessPartner) + " != null");
@@ -48,7 +48,7 @@ namespace TestDeleteDisconnectedEntity
             {
                 var businessPartner = context.BusinessPartners
                     .Include(bp => bp.Contracts)
-                    .Include(bp => bp.Contracts.Select(ube => ube.UrencoBusinessEntity))
+                    .Include(bp => bp.Contracts.Select(be => be.BusinessEntity))
                     .FirstOrDefault(e => e.Name == "Business Partner 1");
 
                 Debug.Assert(businessPartner != null, nameof(businessPartner) + " != null");
@@ -77,7 +77,7 @@ namespace TestDeleteDisconnectedEntity
 
             public DbSet<BusinessPartner> BusinessPartners { get; set; }
             public DbSet<Contract> Contracts { get; set; }
-            public DbSet<UrencoBusinessEntity> UrencoBusinessEntities { get; set; }
+            public DbSet<BusinessEntity> BusinessEntities { get; set; }
         }
 
         internal class BusinessPartner
@@ -98,14 +98,14 @@ namespace TestDeleteDisconnectedEntity
             [ForeignKey(nameof(BusinessPartnerId))]
             public BusinessPartner BusinessPartner { get; set; }
 
-            public int UrencoBusinessEntityId { get; set; }
+            public int BusinessEntityId { get; set; }
 
-            [ForeignKey(nameof(UrencoBusinessEntityId))]
-            public UrencoBusinessEntity UrencoBusinessEntity { get; set; }
+            [ForeignKey(nameof(BusinessEntityId))]
+            public BusinessEntity BusinessEntity { get; set; }
 
         }
 
-        internal class UrencoBusinessEntity
+        internal class BusinessEntity
         {
             public int Id { get; set; }
             public string Name { get; set; }
@@ -115,10 +115,10 @@ namespace TestDeleteDisconnectedEntity
         {
             protected override void Seed(TestDbContext context)
             {
-                var urencoBusinessEntities = new List<UrencoBusinessEntity>
+                var businessEntities = new List<BusinessEntity>
                 {
-                    new UrencoBusinessEntity {Name = "UEC Ltd"},
-                    new UrencoBusinessEntity {Name = "LES"}
+                    new BusinessEntity {Name = "UEC Ltd"},
+                    new BusinessEntity {Name = "LES"}
                 };
 
                 var businessPartners = new List<BusinessPartner>
@@ -130,14 +130,14 @@ namespace TestDeleteDisconnectedEntity
 
                 var contracts = new List<Contract>
                 {
-                    new Contract {BusinessPartner = businessPartners[0], Name = "Contract 1", UrencoBusinessEntity = urencoBusinessEntities[1]},
-                    new Contract {BusinessPartner = businessPartners[0], Name = "Contract 2", UrencoBusinessEntity = urencoBusinessEntities[1]},
-                    new Contract {BusinessPartner = businessPartners[0], Name = "Contract 3", UrencoBusinessEntity = urencoBusinessEntities[1]},
-                    new Contract {BusinessPartner = businessPartners[1], Name = "Contract 11", UrencoBusinessEntity = urencoBusinessEntities[0]},
-                    new Contract {BusinessPartner = businessPartners[1], Name = "Contract 22", UrencoBusinessEntity = urencoBusinessEntities[0]},
+                    new Contract {BusinessPartner = businessPartners[0], Name = "Contract 1", BusinessEntity = businessEntities[1]},
+                    new Contract {BusinessPartner = businessPartners[0], Name = "Contract 2", BusinessEntity = businessEntities[1]},
+                    new Contract {BusinessPartner = businessPartners[0], Name = "Contract 3", BusinessEntity = businessEntities[1]},
+                    new Contract {BusinessPartner = businessPartners[1], Name = "Contract 11", BusinessEntity = businessEntities[0]},
+                    new Contract {BusinessPartner = businessPartners[1], Name = "Contract 22", BusinessEntity = businessEntities[0]},
                 };
 
-                context.UrencoBusinessEntities.AddRange(urencoBusinessEntities);
+                context.BusinessEntities.AddRange(businessEntities);
                 context.BusinessPartners.AddRange(businessPartners);
                 context.Contracts.AddRange(contracts);
 
