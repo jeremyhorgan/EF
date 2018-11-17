@@ -64,7 +64,7 @@ namespace TestDeleteDisconnectedEntityCore
                         }
                         else
                         {
-                            e.Entry.State = EntityState.Added;
+                            e.Entry.State = EntityState.Unchanged;
                         }
                     });
 

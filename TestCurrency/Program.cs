@@ -15,7 +15,7 @@ namespace TestCurrency
         {
             using (var context = new SchoolDbContext())
             {
-                context.Database.Log = Console.Write;
+                // context.Database.Log = Console.Write;
 
                 var chemistryCourse = context.Courses.FirstOrDefault(c => c.Title == "Chemistry");
                 Debug.Assert(chemistryCourse != null, nameof(chemistryCourse) + " != null");
@@ -42,11 +42,11 @@ namespace TestCurrency
 
     internal class SchoolDbContext : DbContext
     {
-        private static readonly string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Work\GitHub\EF\TestCurrency.mdf;Integrated Security=True;Connect Timeout=30";
+        private static readonly string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=c:\Work\EF\TestCurrency.mdf;Integrated Security=True;Connect Timeout=30";
 
         public SchoolDbContext() : base(ConnectionString)
         {
-            // Database.SetInitializer(new SchoolDbInitializer());
+            Database.SetInitializer(new SchoolDbInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -12,9 +13,19 @@ namespace TestDeleteDisconnectedEntity
     {
         private static void Main()
         {
-            Contract contract;
+            // Fetch a contract
+            var contract = DisplayContracts();
 
-            // Fetch a contract and detach
+            // Re-attach a different contract and delete
+            SaveDisconnectedContract(contract.Clone());
+
+            // Display Remaining contracts
+            DisplayContracts();
+        }
+
+        private static Contract DisplayContracts()
+        {
+            Contract contract;
             using (var context = new TestDbContext())
             {
                 var businessPartner = context.BusinessPartners
@@ -33,31 +44,18 @@ namespace TestDeleteDisconnectedEntity
                 contract = businessPartner.Contracts.First();
             }
 
-            // Re-attach the contract and delete
+            return contract;
+        }
+
+        private static void SaveDisconnectedContract(Contract contract)
+        {
+            contract.BusinessPartner = null;
             using (var context = new TestDbContext())
             {
                 Console.WriteLine($"Deleting contract: {contract.Name}");
 
                 context.Entry(contract).State = EntityState.Deleted;
-
                 context.SaveChanges();
-            }
-
-            // Remaining contracts
-            using (var context = new TestDbContext())
-            {
-                var businessPartner = context.BusinessPartners
-                    .Include(bp => bp.Contracts)
-                    .Include(bp => bp.Contracts.Select(be => be.BusinessEntity))
-                    .FirstOrDefault(e => e.Name == "Business Partner 1");
-
-                Debug.Assert(businessPartner != null, nameof(businessPartner) + " != null");
-
-                Console.WriteLine(businessPartner.Name);
-                foreach (var c in businessPartner.Contracts)
-                {
-                    Console.WriteLine(c.Name);
-                }
             }
         }
 
@@ -103,6 +101,11 @@ namespace TestDeleteDisconnectedEntity
             [ForeignKey(nameof(BusinessEntityId))]
             public BusinessEntity BusinessEntity { get; set; }
 
+            public Contract Clone()
+            {
+                var clone = (Contract)MemberwiseClone();
+                return clone;
+            }
         }
 
         internal class BusinessEntity

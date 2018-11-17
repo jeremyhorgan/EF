@@ -89,7 +89,7 @@ namespace TestCollectionEncapsulation
 
     internal class SchoolDbContext : DbContext
     {
-        private static readonly string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Temp\TestEfConsoleApp\Database.mdf;Integrated Security=True;Connect Timeout=30";
+        private static readonly string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=c:\Work\EF\TestCollectionEncapsulation.mdf;Integrated Security=True;Connect Timeout=30";
 
         public SchoolDbContext() : base(ConnectionString)
         {
