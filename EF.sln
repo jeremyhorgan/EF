@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDeleteDisconnectedEntit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUpdateDisconnectedEntity", "TestUpdateDisconnectedEntity\TestUpdateDisconnectedEntity.csproj", "{7D410F67-ED11-4780-A52C-513810EBC3FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRepository", "TestRepository\TestRepository.csproj", "{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7D410F67-ED11-4780-A52C-513810EBC3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D410F67-ED11-4780-A52C-513810EBC3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D410F67-ED11-4780-A52C-513810EBC3FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
