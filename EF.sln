@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCollectionEncapsulation", "TestCollectionEncapsulation\TestCollectionEncapsulation.csproj", "{D309A175-3B5B-422B-8DDE-3EA096660A7D}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUpdateDisconnectedEntity", "TestUpdateDisconnectedEntity\TestUpdateDisconnectedEntity.csproj", "{7D410F67-ED11-4780-A52C-513810EBC3FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRepository", "TestRepository\TestRepository.csproj", "{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUpdateDisconnectedEntity2", "TestUpdateDisconnectedEntity2\TestUpdateDisconnectedEntity2.csproj", "{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE7CEE3-7C9A-4DBD-A3DF-BF52DADBEEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
