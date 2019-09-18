@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 // ReSharper disable InconsistentNaming
-namespace TestUpdateDisconnectedEntity2
+namespace TestUpdateDisconnectedEntity2Core
 {
     internal abstract class Entity
     {
@@ -187,36 +187,34 @@ namespace TestUpdateDisconnectedEntity2
         private static readonly string ConnectionString =
             @"Data Source=jhorgan-xps\SQLEXPRESS;Database=DPSRealData;Trusted_Connection=True";
 
-        public AppDbContext() : base(ConnectionString)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.AutoDetectChangesEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
+            optionsBuilder.UseSqlServer(ConnectionString);
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SiteScenario>()
                 .HasMany(ssd => ssd.SiteScenarioDatums)
-                .WithRequired(ssd => ssd.SiteScenario)
+                .WithOne(ssd => ssd.SiteScenario)
                 .HasForeignKey(ssd => ssd.SiteScenarioId);
 
             modelBuilder.Entity<SiteScenarioDatum>()
                 .HasMany(se => se.SiteEnrichments)
-                .WithRequired(se => se.ScenarioDatum)
+                .WithOne(se => se.ScenarioDatum)
                 .HasForeignKey(ssd => ssd.ScenarioDatumId);
-
             modelBuilder.Entity<SiteScenarioDatum>()
                 .HasMany(scs => scs.SiteCylinderStockDatums)
-                .WithRequired(scs => scs.ScenarioDatum)
-                .HasForeignKey(ssd => ssd.ScenarioDatumId);
+                .WithOne(scs => scs.ScenarioDatum)
+                .HasForeignKey(scs => scs.ScenarioDatumId);
 
             modelBuilder.Entity<SiteEnrichment>()
-                .HasRequired(se => se.FeedType)
+                .HasOne(se => se.FeedType)
                 .WithMany()
                 .HasForeignKey(se => se.FeedTypeId);
             modelBuilder.Entity<SiteEnrichment>()
-                .HasRequired(pu => pu.ProductionUnit)
+                .HasOne(pu => pu.ProductionUnit)
                 .WithMany()
                 .HasForeignKey(pu => pu.ProductionUnitId);
         }

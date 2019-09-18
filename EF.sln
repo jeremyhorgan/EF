@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRepository", "TestRepos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUpdateDisconnectedEntity2", "TestUpdateDisconnectedEntity2\TestUpdateDisconnectedEntity2.csproj", "{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUpdateDisconnectedEntity2Core", "TestUpdateDisconnectedEntity2Core\TestUpdateDisconnectedEntity2Core.csproj", "{3BC98185-A6E2-402B-A923-01888184CA63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA6AA9F8-ACFE-4E38-B59E-F53BD8ECAF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BC98185-A6E2-402B-A923-01888184CA63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC98185-A6E2-402B-A923-01888184CA63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC98185-A6E2-402B-A923-01888184CA63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC98185-A6E2-402B-A923-01888184CA63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
