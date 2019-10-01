@@ -36,7 +36,7 @@ namespace TestUpdateDisconnectedEntity2Core
             // DisplayStatistics(siteScenarios);
 
             ChangeSiteEnrichments(siteScenarioDatums.First().SiteEnrichments);
-            UpdateSiteScenarios(siteScenario);
+            UpdateSiteScenarios2(siteScenario);
         }
 
         private void DisplayStatistics(List<SiteScenario> siteScenarios)
@@ -117,6 +117,33 @@ namespace TestUpdateDisconnectedEntity2Core
             stopwatch.Stop();
 
             Console.WriteLine($"Update complete. Time taken: {stopwatch.ElapsedMilliseconds}ms");
+        }
+
+        private static void UpdateSiteScenarios2(SiteScenario siteScenario)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            Console.WriteLine("Updating2...");
+
+            using (var context = new AppDbContext())
+            {
+                foreach (var scenarioDatum in siteScenario.SiteScenarioDatums)
+                {
+                    foreach (var siteEnrichment in scenarioDatum.SiteEnrichments)
+                    {
+                        if (siteScenario.IsUpdated)
+                        {
+                            context.Entry(siteEnrichment).State = EntityState.Modified;
+                        }
+                    }
+                }
+                context.SaveChanges();
+            }
+
+            stopwatch.Stop();
+
+            Console.WriteLine($"Update2 complete. Time taken: {stopwatch.ElapsedMilliseconds}ms");
         }
 
         private static void UpdateEntityState(EntityEntryGraphNode node)

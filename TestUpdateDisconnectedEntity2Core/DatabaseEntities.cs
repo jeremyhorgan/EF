@@ -37,17 +37,17 @@ namespace TestUpdateDisconnectedEntity2Core
         public DateTime ModificationDate { get; set; }
         public int SiteScenarioId { get; set; } // Ref
         public int SiteId { get; set; }
-        public DateTime SAPDataExportDate { get; set; }
+        public DateTime? SAPDataExportDate { get; set; }
         public string Comment { get; set; }
-        public DateTime CylinderStockSAPExportDate { get; set; }
-        public DateTime GoodsIssuedSAPExportDate { get; set; }
-        public DateTime MaterialStockSAPExportDate { get; set; }
-        public DateTime SalesOrdersSAPExportDate { get; set; }
-        public DateTime OrdersConvertedSAPExportDate { get; set; }
-        public DateTime OneSBottleLinksSAPExportDate { get; set; }
-        public DateTime ProductionOrdersSAPExportDate { get; set; }
+        public DateTime? CylinderStockSAPExportDate { get; set; }
+        public DateTime? GoodsIssuedSAPExportDate { get; set; }
+        public DateTime? MaterialStockSAPExportDate { get; set; }
+        public DateTime? SalesOrdersSAPExportDate { get; set; }
+        public DateTime? OrdersConvertedSAPExportDate { get; set; }
+        public DateTime? OneSBottleLinksSAPExportDate { get; set; }
+        public DateTime? ProductionOrdersSAPExportDate { get; set; }
         public string DataImportedBy { get; set; }
-        public DateTime FeedOrdersSAPExportDate { get; set; }
+        public DateTime? FeedOrdersSAPExportDate { get; set; }
         public SiteScenario SiteScenario { get; set; }
         public List<SiteEnrichment> SiteEnrichments { get; set; }
         public List<SiteCylinderStockDatum> SiteCylinderStockDatums { get; set; }
@@ -69,12 +69,12 @@ namespace TestUpdateDisconnectedEntity2Core
         public int CylinderSize { get; set; }
         public int FeedTypeId { get; set; } // Ref
         public string CylinderReference { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public long SAPOrderNumber { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public long? SAPOrderNumber { get; set; }
         public double RawOperationalQuantityKilogramsUF6 { get; set; }
         public int? SalesOrderId { get; set; }
-        public long LannerOrderNumber { get; set; }
+        public long? LannerOrderNumber { get; set; }
         public int ProductionUnitId { get; set; } // Ref
         public bool IsBlendingDonor { get; set; }
         public string ProductionVersion { get; set; }
@@ -146,9 +146,11 @@ namespace TestUpdateDisconnectedEntity2Core
         public DateTime ModificationDate { get; set; }
         public string Name { get; set; }
         public int SiteId { get; set; }
-        public string EnrichmentPV { get; set; }
-        public string SamplingPV { get; set; }
-        public string IntraPlantBlendPV { get; set; }
+        public string SAPRef { get; set; }
+        public string Notes { get; set; }
+        public bool Capacity30B { get; set; }
+        public bool Capacity48Y { get; set; }
+        public int SimultaneousFill { get; set; }
     }
 
     internal class ProductionPlant : Entity
